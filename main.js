@@ -39,10 +39,10 @@
    const map = new Map(listCity);
  
    map.findToNorthernmostCity();
-   map.findToEastermostCity();
+   map.findToEasternmostCity();
    map.findToSouthernmostCity();
    map.findToWesternmostCity();
  
    map.findToNearestCity(39.11, -100.0);
  
-   map.findToCityAbbreviations(); 
+   map.findToStatesCodesWithoutRepeat(); 
