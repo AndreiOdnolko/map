@@ -12,44 +12,36 @@ class Map {
   }
 
   findToNorthernmostCity() {
-    if (this.northernmostCity != null) {
-      this.northernmostCity;
-    } else {
+    if (this.northernmostCity === null) {
       this.northernmostCity = this.listCity.reduce((acc, elem) => {
-        return this._getNorthernmostOrEasternmostPoint(acc, elem, acc.latitudes, elem.latitudes);
+        return this._getMaxLatitudeOrLongitude(acc, elem, acc.latitudes, elem.latitudes);
       })
     }
     return "The name of the northernmost city: " + this.northernmostCity.name;
   }
 
   findToEasternmostCity() {
-    if (this.easternmostCity != null) {
-      this.easternmostCity;
-    } else {
+    if (this.easternmostCity === null) {      
       this.easternmostCity = this.listCity.reduce((acc, elem) => {
-        return this._getNorthernmostOrEasternmostPoint(acc, elem, acc.longitudes, elem.longitudes);
+        return this._getMaxLatitudeOrLongitude(acc, elem, acc.longitudes, elem.longitudes);
       });
     }
     return "The name of the eastermost city: " + this.easternmostCity.name;
   }
 
   findToSouthernmostCity() {
-    if (this.southernmostCity != null) {
-      this.southernmostCity;
-    } else {
+    if (this.southernmostCity === null) {      
       this.southernmostCity = this.listCity.reduce((acc, elem) => {
-        return this._getSouthernmostOrWesternmostPoint(acc, elem, acc.latitudes, elem.latitudes);
+        return this._getMinLatitudeOrLongitude(acc, elem, acc.latitudes, elem.latitudes);
       });
     }
     return "The name of the southernmost city: " + this.southernmostCity.name;
   }
 
   findToWesternmostCity() {
-    if (this.westernmostCity != null) {
-      this.westernmostCity;
-    } else {
+    if (this.westernmostCity === null) {      
       this.westernmostCity = this.listCity.reduce((acc, elem) => {
-        return this._getSouthernmostOrWesternmostPoint(acc, elem, acc.longitudes, elem.longitudes);
+        return this._getMinLatitudeOrLongitude(acc, elem, acc.longitudes, elem.longitudes);
       });
     }
     return "The name of the westernmost city: " + this.westernmostCity.name;
@@ -77,19 +69,19 @@ class Map {
     return "List without repeated abbreviations: " + this.listWithoutRepeatedStatesCodes.join(", ");
   }
 
-  _getNorthernmostOrEasternmostPoint(acc, elem, maxCoordinate1, maxCoordinate2) {
-    if (maxCoordinate1 < maxCoordinate2) {
-      return elem;
+  _getMaxLatitudeOrLongitude(maxCurrentPoint, newPoint, coordinate1, coordinate2) {
+    if (coordinate1 < coordinate2) {
+      return newPoint;
     } else {
-      return acc;
+      return maxCurrentPoint;
     }
   }
 
-  _getSouthernmostOrWesternmostPoint(acc, elem, minCoordinate1, minCoordinate2) {
+  _getMinLatitudeOrLongitude(minCurrentPoint, newPoint, minCoordinate1, minCoordinate2) {
     if (minCoordinate1 > minCoordinate2) {
-      return elem;
+      return newPoint;
     } else {
-      return acc;
+      return minCurrentPoint;
     }
   }
 
