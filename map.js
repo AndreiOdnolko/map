@@ -77,8 +77,8 @@ class Map {
     }
   }
 
-  _getMinLatitudeOrLongitude(minCurrentPoint, newPoint, minCoordinate1, minCoordinate2) {
-    if (minCoordinate1 > minCoordinate2) {
+  _getMinLatitudeOrLongitude(minCurrentPoint, newPoint, coordinate1, coordinate2) {
+    if (coordinate1 > coordinate2) {
       return newPoint;
     } else {
       return minCurrentPoint;
