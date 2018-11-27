@@ -36,13 +36,5 @@ const listCity = [
   }
 ];
 
+
 const map = new Map(listCity);
-
-map.findToNorthernmostCity();
-map.findToEasternmostCity();
-map.findToSouthernmostCity();
-map.findToWesternmostCity();
-
-map.findToNearestCity(39.11, -100.0);
-
-map.findToStatesCodesWithoutRepeat(); 
